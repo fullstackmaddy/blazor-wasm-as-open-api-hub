@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Blazor.OpenAPI.Hub</title>
+    <base href="/" />
+    <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/app.css" rel="stylesheet" />
+    <link href="Blazor.OpenAPI.Hub.styles.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div id="app">Loading...</div>
+
+    <div id="blazor-error-ui">
+        An unhandled error has occurred.
+        <a href="" class="reload">Reload</a>
+        <a class="dismiss">🗙</a>
+    </div>
+    <script src="_framework/blazor.webassembly.js"></script>
+    <script src="javascripts/swagger-ui-bundle.js"></script>
+    <script src="javascripts/swagger-ui-standalone-preset.js"></script>
+    <script>
+        window.buildSwaggerUI = function () {
+            // Begin Swagger UI call region
+            const ui = SwaggerUIBundle({
+                urls: [
+                    {
+                        url: "apidefinitions/PetStorev2.json",
+                        name: "PetStore V2"
+                    },
+                    {
+                        url: "apidefinitions/PetStorev3.json",
+                        name: "PetStore V3"
+                    }
+                ],
+                dom_id: "#swagger-ui",
+                deepLinking: true,
+                presets: [
+                    SwaggerUIBundle.presets.apis,
+                    SwaggerUIStandalonePreset
+                ],
+                plugins: [
+                    SwaggerUIBundle.plugins.DownloadUrl
+                ],
+                layout: "StandaloneLayout"
+            })
+            // End Swagger UI call region
+
+            window.ui = ui
+        }
+    </script>
+</body>
+
+</html>

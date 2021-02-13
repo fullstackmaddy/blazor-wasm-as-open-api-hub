@@ -1,0 +1,14 @@
+﻿@page "/apidocs"
+
+@inject IJSRuntime JSR
+
+
+<div id="swagger-ui" class="swagger-ui swagger-container"></div>
+
+@code
+{
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await JSR.InvokeVoidAsync("buildSwaggerUI");
+    }
+}
